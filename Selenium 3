@@ -1,0 +1,26 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class MakeMyTrip {
+
+    public static void main(String[] args) {
+
+        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://www.makemytrip.com/");
+        driver.manage().window().maximize();
+
+        // Close popup
+        driver.findElement(By.xpath("//span[@class='commonModal__close']")).click();
+
+        // Locate logo
+        WebElement logo = driver.findElement(By.xpath("//a[@class='mmtLogo']"));
+
+        System.out.println("Is MakeMyTrip logo displayed? " + logo.isDisplayed());
+
+        driver.quit();
+    }
+}
